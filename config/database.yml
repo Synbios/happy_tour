@@ -52,5 +52,6 @@ test:
 production:
   <<: *default
   database: happy_tour_production
-  username: happy_tour
-  password: <%= ENV['HAPPY_TOUR_DATABASE_PASSWORD'] %>
+  username: root
+  socket: /var/run/mysqld/mysqld.sock
+  password: qwedcxzas
