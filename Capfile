@@ -9,7 +9,7 @@ require 'capistrano/bundler'
 require 'capistrano/rvm'
 require 'capistrano/puma'
 require 'capistrano/rails/collection'
-require "whenever/capistrano"
+#require "whenever/capistrano"
 install_plugin Capistrano::Puma
 
 # Load the SCM plugin appropriate to your project:
