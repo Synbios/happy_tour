@@ -1,0 +1,181 @@
+<% content_for :header_class do %>lightHeader<% end %>
+
+<!-- PAGE TITLE -->
+<section class="pageTitle" style="background-image:url(img/pages/page-title-bg5.jpg);">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="titleTable">
+          <div class="titleTableInner">
+            <div class="pageTitleInfo">
+              <h1>联系我们</h1>
+              <div class="under-border"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHITE SECTION-->
+<section class="mainContentSection">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-5 col-lg-4 col-xs-12">
+        <div class="contactInfo">
+          <h2>客户回馈</h2>
+          <p>您宝贵的意见可以帮助我们做得更好!</p>
+          <div class="media">
+            <a class="media-left" href="#">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading">地址/address</h4>
+              <p>7151 No.5 Rd<br>Richmond V6Y 2V3, BC Canada</p>
+            </div>
+          </div>
+          <div class="media">
+            <a class="media-left" href="#">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading">电话/Phone number</h4>
+              <p>
+                +1 604 636-8588(加拿大)<br>
+                95040386366(中国免费专线)
+              </p>
+            </div>
+          </div>
+          <div class="media">
+            <a class="media-left" href="#">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading">电子邮件/email</h4>
+              <p><a href="mailTo:info@happytourcanada.com">info@happytourcanada.com</a></p>
+            </div>
+          </div>
+          <div class="media">
+            <a class="media-left" href="#">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading">电子邮件/email</h4>
+              <p>
+                <a href="mailTo:info@happytourcanada.com">info@happytourcanada.com</a>
+                <br>微信: letu_trip
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-7 col-xs-12 col-lg-8">
+        <div class="contactForm">
+          <form action="" method="POST" role="form" class="form">
+            <div class="form-group">
+              <input type="text" class="form-control" id="" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="" placeholder="Your Phone">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" id="" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" class="btn buttonCustomPrimary">send message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP AREA SECTION -->
+<section class="mapArea">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12097.002861286059!2d-74.01154310416635!3d40.71249695811257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY!5e0!3m2!1sen!2s!4v1502716241862" height="555" frameborder="0" style="border:0" allowfullscreen></iframe>
+</section>
+
+<% content_for :modals do %>
+<!-- Signup Modal -->
+<div class="modal fade signupLoging" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modalContentCustom">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create your account</h4>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="">
+          <div class="form-group">
+            <input type="text" class="form-control bg-ash" id="exampleInputEmail1" placeholder="Full Name">
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control bg-ash" id="exampleInputPassword1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control bg-ash" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> I agree to the terms of use and privacy.
+            </label>
+          </div>
+          <button type="submit" class="btn btn-default">Login</button>
+        </form>
+        <div class="or">
+          or
+        </div>
+        <a class="btn btn-default btnSocial"  href="#">Log in with facebook</a>
+      </div>
+
+      <div class="modal-footer">
+          <div class="dontHaveAccount">
+            <p>Don’t have an Account?<a href=""> Sign up</a></p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal fade signupLoging" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modalContentCustom">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Log in to your account</h4>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="">
+          <div class="form-group">
+            <input type="email" class="form-control bg-ash" id="exampleInputPassword1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control bg-ash" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Remember me
+            </label>
+            <a class="forgotPass clerfix" href="">Fogot Password?</a>
+          </div>
+          <button type="submit" class="btn btn-default">Login</button>
+        </form>
+        <div class="or">
+          or
+        </div>
+        <a class="btn btn-default btnSocial"  href="#">Log in with facebook</a>
+      </div>
+
+      <div class="modal-footer">
+          <div class="dontHaveAccount">
+            <p>Don’t have an Account?<a href=""> Sign up</a></p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

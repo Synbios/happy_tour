@@ -1,0 +1,17 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ *= require jquery-ui
+ *= require_self
+ *= require plugins/selectbox/select_option1
+ *= require plugins/datepicker/datepicker
+ *= require plugins/isotope/jquery.fancybox
+ *= require plugins/isotope/isotope
+ *= require star-style.css
+ *= require star-default.css
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "font-awesome";
