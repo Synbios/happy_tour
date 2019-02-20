@@ -1,6 +1,6 @@
 set :stage,         :production
 set :branch,        :master
-server 'letu.kevenlol.com', port: 22, roles: [:web, :app, :db], primary: true, user: 'deploy'
+server 'happytourcanada.com', port: 22, roles: [:web, :app, :db], primary: true, user: 'deploy'
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

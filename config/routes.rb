@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root "home#home"
 
   get '/contact', to: "home#contact"
+  get '/about', to: "home#about"
 end
