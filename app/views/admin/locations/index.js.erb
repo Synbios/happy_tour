@@ -1,0 +1,34 @@
+$('#locations_table').replaceWith('<%=j render partial: 'index.html.erb', locals: {} %>');
+
+var table_data = [
+  <% @locations.each do |location| %>
+    <%= render partial: 'row.js.erb', locals: { location: location } %> ,
+  <% end %>
+];
+
+$('#locations_table').DataTable({
+  sDom: "<'dt-toolbar'<'col-xs-12 col-sm-6 hidden-xs'f><'col-sm-6 col-xs-12'l>r>"+
+    "t"+
+    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+  autoWidth: false,
+  data: table_data,
+  pagingType: "simple",
+  pageLength: 10,
+  aaSorting: [],
+  columns: [
+    { data: 'chinese' },
+    { data: 'english' },
+    { data: 'created_at' },
+    {
+      data: 'actions',
+      className: "text-center",
+      orderable: false
+    }
+  ]
+});
+
+$("div#locations_table_length").after('<div class="text-right"><button id="new_location" class="btn btn-info margin-right-5">新景点</button></div>' );
+
+$( "#new_location" ).on('click', () => {
+  call_ajax_by_url('<%= new_admin_location_path %>');
+});

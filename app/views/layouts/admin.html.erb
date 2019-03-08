@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-us" id="<%= yield :html_id %>">
+<head>
+  <meta charset="utf-8">
+
+  <title> 后台管理 </title>
+  <%= csrf_meta_tags %>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <%= stylesheet_link_tag 'admin', media: 'screen' %>
+
+  <!-- FAVICONS -->
+  <%= favicon_link_tag 'favicon/favicon.ico' %>
+  <%= favicon_link_tag 'favicon/favicon.ico', rel: 'icon' %>
+
+  <!-- GOOGLE FONT -->
+  <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700' %>
+
+
+  <%= yield :head %>
+  <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+</head>
+
+<!--
+
+TABLE OF CONTENTS.
+
+Use search to find needed section.
+
+===================================================================
+
+|  01. #CSS Links                |  all CSS links and file paths  |
+|  02. #FAVICONS                 |  Favicon links and file paths  |
+|  03. #GOOGLE FONT              |  Google font link              |
+|  04. #APP SCREEN / ICONS       |  app icons, screen backdrops   |
+|  05. #BODY                     |  body tag                      |
+|  06. #HEADER                   |  header tag                    |
+|  07. #PROJECTS                 |  project lists                 |
+|  08. #TOGGLE LAYOUT BUTTONS    |  layout buttons and actions    |
+|  09. #MOBILE                   |  mobile view dropdown          |
+|  10. #SEARCH                   |  search field                  |
+|  11. #NAVIGATION               |  left panel & navigation       |
+|  12. #RIGHT PANEL              |  right panel userlist          |
+|  13. #MAIN PANEL               |  main panel                    |
+|  14. #MAIN CONTENT             |  content holder                |
+|  15. #PAGE FOOTER              |  page footer                   |
+|  16. #SHORTCUT AREA            |  dropdown shortcuts area       |
+|  17. #PLUGINS                  |  all scripts and plugins       |
+
+===================================================================
+
+-->
+
+<!-- #BODY -->
+<!-- Possible Classes
+
+  * 'smart-style-{SKIN#}'
+  * 'smart-rtl'         - Switch theme mode to RTL
+  * 'menu-on-top'       - Switch to top navigation (no DOM change required)
+  * 'no-menu'			  - Hides the menu completely
+  * 'hidden-menu'       - Hides the main menu but still accessable by hovering over left edge
+  * 'fixed-header'      - Fixes the header
+  * 'fixed-navigation'  - Fixes the main menu
+  * 'fixed-ribbon'      - Fixes breadcrumb
+  * 'fixed-page-footer' - Fixes footer
+  * 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
+-->
+<body class="<%= yield :body_class %>">
+
+<!-- HEADER -->
+<%= render partial: 'layouts/admin/header' unless @lock_screen %>
+<!-- END HEADER -->
+
+<!-- Left panel : Navigation area -->
+<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+<%= render partial: 'layouts/admin/left_panel' if current_user && !@simulate_no_user %>
+<!-- END NAVIGATION -->
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+  <%= yield :ribbon %>
+  <% if notice %>
+    <div class="alert alert-success fade in">
+      <button data-dismiss="alert" class="close">
+        ×
+      </button>
+      <i class="fa-fw fa fa-check"></i>
+      <%= notice %>
+    </div>
+  <% end %>
+  <% if alert %>
+    <div class="alert alert-warning fade in">
+      <button data-dismiss="alert" class="close">
+        ×
+      </button>
+      <i class="fa-fw fa fa-warning"></i>
+      <%= alert %>
+    </div>
+  <% end %>
+  <%= yield %>
+</div>
+<!-- END MAIN PANEL -->
+
+<!-- PAGE FOOTER -->
+<%= render partial: 'layouts/admin/footer' if current_user && !@simulate_no_user %>
+<!-- END PAGE FOOTER -->
+
+<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
+Note: These tiles are completely responsive,
+you can add as many as you like
+-->
+<%= render partial: 'layouts/admin/tiles' if current_user && !@simulate_no_user %>
+<!-- END SHORTCUT AREA -->
+
+<!--================================================== -->
+
+<%= javascript_include_tag 'admin' %>
+
+
+
+<!--[if IE 8]>
+
+<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+<![endif]-->
+
+<%= yield(:scripts).present? ? yield(:scripts) : render(partial: 'layouts/admin/scripts') %>
+
+<script>
+  const call_ajax_by_url = (url) => {
+    $.ajax({
+      url: url,
+      method: "GET",
+      dataType: "script"
+    })
+  };
+</script>
+</body>
+</html>

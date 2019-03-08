@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class HomeController < MasterController
 
   def home
   end

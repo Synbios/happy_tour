@@ -1,0 +1,12 @@
+<% if @product.errors.any? %>
+  toastr.error("<%= @product.errors.full_messages.join('<br>') %>");
+
+<% else %>
+  $('#mod-product-input .modal-content').html('');
+  $('#mod-product-input').modal("hide");
+
+  $('#products_table').DataTable().row('#<%= @product.id %>').data( <%= render partial: 'row.js.erb', locals: { product: @product } %> ).draw(false);
+
+  $('#mod-product-input form').find('input:text, input:password, input:file, select, textarea').val('');
+  $('#mod-product-input form').find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
+<% end %>

@@ -1,0 +1,4 @@
+$('#mod-location-input .modal-content').replaceWith('<%=j render partial: 'modal_content.html.erb', locals: { location: @location, title: "新景点", type: "new" } %>');
+
+// 2. open modal
+$('#mod-location-input').modal("show");

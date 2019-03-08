@@ -1,0 +1,36 @@
+$('#products_table').replaceWith('<%=j render partial: 'index.html.erb', locals: {} %>');
+
+var table_data = [
+  <% @products.each do |product| %>
+    <%= render partial: 'row.js.erb', locals: { product: product } %> ,
+  <% end %>
+];
+
+$('#products_table').DataTable({
+  sDom: "<'dt-toolbar'<'col-xs-12 col-sm-6 hidden-xs'f><'col-sm-6 col-xs-12'l>r>"+
+    "t"+
+    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+  autoWidth: false,
+  data: table_data,
+  pagingType: "simple",
+  pageLength: 10,
+  aaSorting: [],
+  columns: [
+    { data: 'name' },
+    { data: 'slide_images' },
+    { data: 'options' },
+    { data: 'days' },
+    { data: 'created_at' },
+    {
+      data: 'actions',
+      className: "text-center",
+      orderable: false
+    }
+  ]
+});
+
+$("div#products_table_length").after('<div class="text-right"><button id="new_product" class="btn btn-info margin-right-5">新线路</button></div>' );
+
+$( "#new_product" ).on('click', () => {
+  call_ajax_by_url('<%= new_admin_product_path %>');
+});

@@ -1,0 +1,7 @@
+{
+  'DT_RowId':   '<%= product_date.id %>',
+  'number': '第<%= product_date.number %>天',
+  'title': '<%= product_date.title %>',
+  'actions': '<%= link_to("Edit", edit_admin_product_date_path(product_date), remote: true, class: "btn btn-info btn-xs").html_safe %> '
+  + '<%= link_to("Delete", admin_product_date_path(product_date), remote: true, method: :delete, data: { confirm: 'Are you sure to delete this day?' }, class: "btn btn-danger btn-xs").html_safe %> '
+}

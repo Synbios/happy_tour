@@ -26,14 +26,17 @@
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">经典线路</a>
             <ul class="dropdown-menu dropdown-menu-right">
               <li class="dropdown dropdown-submenu">
-                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">路线二级目录1 <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">温哥华周边 <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 <ul class="dropdown-menu">
-                  <li class=""><a href="blog-grid-three-col.html">路线三级目录</a></li>
-                  <li class=""><a href="blog-grid-two-col.html">路线三级目录</a></li>
+                  <% Product.all.each do |product| %>
+                  <li>
+                    <%= link_to product.name, product_path(product) %>
+                  </li>
+                  <% end %>
                 </ul>
               </li>
               <li class="dropdown dropdown-submenu">
-                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">路线二级目录2 <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">落基山脉 <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 <ul class="dropdown-menu">
                   <li class=""><a href="blog-list-right-sidebar.html">路线三级目录</a></li>
                   <li class=""><a href="blog-list-left-sidebar.html">路线三级目录</a></li>
@@ -41,7 +44,21 @@
                 </ul>
               </li>
               <li class="dropdown dropdown-submenu">
-                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">路线二级目录3 <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">加东 <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu">
+                  <li class=""><a href="blog-single-right-sidebar.html">路线三级目录</a></li>
+                  <li class=""><a href="blog-single-left-sidebar.html">路线三级目录</a></li>
+                </ul>
+              </li>
+              <li class="dropdown dropdown-submenu">
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">美国 <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu">
+                  <li class=""><a href="blog-single-right-sidebar.html">路线三级目录</a></li>
+                  <li class=""><a href="blog-single-left-sidebar.html">路线三级目录</a></li>
+                </ul>
+              </li>
+              <li class="dropdown dropdown-submenu">
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">环游世界 <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 <ul class="dropdown-menu">
                   <li class=""><a href="blog-single-right-sidebar.html">路线三级目录</a></li>
                   <li class=""><a href="blog-single-left-sidebar.html">路线三级目录</a></li>

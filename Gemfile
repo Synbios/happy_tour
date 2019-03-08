@@ -68,3 +68,14 @@ gem 'bootstrap-sass', '~> 3.4.0'
 gem "font-awesome-rails"
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+
+gem 'bootstrap-datepicker-rails'
+gem 'ckeditor'
+gem 'devise'
+gem 'toastr-rails'
+
+gem 'remotipart'
+gem "paperclip", "~> 6.0.0"
+gem 'sitemap_generator'
+gem 'momentjs-rails'
+gem 'moment_timezone-rails'

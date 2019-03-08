@@ -1,0 +1,4 @@
+$('#mod-product-input .modal-content').replaceWith('<%=j render partial: 'modal_content.html.erb', locals: { product: @product, title: "新线路", type: "new" } %>');
+
+// 2. open modal
+$('#mod-product-input').modal("show");

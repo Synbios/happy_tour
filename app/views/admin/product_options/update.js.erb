@@ -1,0 +1,5 @@
+<% if @product_option.errors.any? %>
+  toastr.error("<%= @product_option.errors.full_messages.join('<br>') %>");
+<% else %>
+  call_ajax_by_url('<%= admin_product_product_options_path(@product_option.product) %>');
+<% end %>

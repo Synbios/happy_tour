@@ -1,0 +1,83 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title"><%= title %></h4>
+  </div>
+  <div class="modal-body no-padding">
+    <%= form_for [:admin, product, product_option], html: { remote: true, class: "smart-form", role: "form", multipart: true }, authenticity_token: true do |f| %>
+      <fieldset>
+        <section>
+          <%= f.label :name, "Name", class: "label" %>
+          <%= f.label :name, class: "input" do %>
+            <%= f.text_field :name %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :description, "Description", class: "label" %>
+          <%= f.label :description, class: "textarea" do %>
+            <%= f.text_area :description, placeholder: "", rows: 5 %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :line1, "Line1", class: "label" %>
+          <%= f.label :line1, class: "input" do %>
+            <%= f.text_field :line1 %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :line2, "Line2", class: "label" %>
+          <%= f.label :line2, class: "input" do %>
+            <%= f.text_field :line2 %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :line3, "Line3", class: "label" %>
+          <%= f.label :line3, class: "input" do %>
+            <%= f.text_field :line3 %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :line4, "Line4", class: "label" %>
+          <%= f.label :line4, class: "input" do %>
+            <%= f.text_field :line4 %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :line5, "Line5", class: "label" %>
+          <%= f.label :line5, class: "input" do %>
+            <%= f.text_field :line5 %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :line6, "Line6", class: "label" %>
+          <%= f.label :line6, class: "input" do %>
+            <%= f.text_field :line6 %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :line7, "Line7", class: "label" %>
+          <%= f.label :line7, class: "input" do %>
+            <%= f.text_field :line7 %>
+          <% end %>
+        </section>
+      </fieldset>
+
+      <footer>
+        <button type="submit" class="btn btn-primary" data-loading-text="<i class='fa fw fa-circle-o-notch fa-spin '></i> Processing...">
+          提交
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+      </footer>
+    <% end %>
+  </div>
+</div>

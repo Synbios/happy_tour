@@ -1,0 +1,5 @@
+// 1. fill in modal
+$('#mod-location-input .modal-content').replaceWith('<%=j render partial: 'modal_content.html.erb', locals: { location: @location, title: "修改景点信息", type: "edit" } %>');
+
+// 2. open modal
+$('#mod-location-input').modal("show");

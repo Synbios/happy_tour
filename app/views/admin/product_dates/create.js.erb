@@ -1,0 +1,5 @@
+<% if @product_date.errors.any? %>
+  toastr.error("<%= @product_date.errors.full_messages.join('<br>') %>");
+<% else %>
+  call_ajax_by_url('<%= admin_product_product_dates_path(@product) %>');
+<% end %>

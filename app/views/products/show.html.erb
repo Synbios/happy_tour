@@ -1,0 +1,228 @@
+<% content_for :header_class do %>lightHeader<% end %>
+
+<!-- PAGE TITLE -->
+<section class="pageTitle" style="background-image:url(/img/pages/page-title-bg13.jpg);">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="titleTable">
+          <div class="titleTableInner">
+            <div class="pageTitleInfo">
+              <h1><%= @product.name %></h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE CONTENT -->
+<section class="mainContentSection singlePackage">
+  <div class="container">
+    <div class="row ">
+      <div class="col-xs-12">
+        <div class="row">
+          <!-- carousel -->
+          <% if @product_slides.any? %>
+          <div class="col-xs-12">
+            <div id="package-carousel" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <% @product_slides.each_with_index do |product_slide, index| %>
+                  <% if index == 0 %>
+                    <li data-target="#package-carousel" data-slide-to="0" class="active"></li>
+                  <% else %>
+                    <li data-target="#package-carousel" data-slide-to="<%= index %>" class=""></li>
+                  <% end %>
+                <% end %>
+              </ol>
+              <div class="carousel-inner">
+                <% @product_slides.each_with_index do |product_slide, index| %>
+                  <% if index == 0 %>
+                    <div class="item active">
+                      <%= image_tag product_slide.image.url(:large), alt: "tour image" %>
+                    </div>
+                  <% else %>
+                    <div class="item">
+                      <%= image_tag product_slide.image.url(:large), alt: "tour image" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <a class="left carousel-control" href="#package-carousel" data-slide="prev"><span class="glyphicon glyphicon-menu-left"></span></a>
+              <a class="right carousel-control" href="#package-carousel" data-slide="next"><span class="glyphicon glyphicon-menu-right"></span></a>
+            </div>
+
+          </div>
+          <% end %>
+          <div class="col-xs-12">
+            <div class="description-aria">
+              <div class="sectionTitle2">
+                <h2>行程描述</h2>
+                <p>
+                  <%= @product.description %>
+                </p>
+              </div>
+              <!-- <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                  <ul class="descriptionList">
+                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Cras tincidunt mi a sodales pulvinar.</li>
+                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Mauris in libero sodales ultrices purus</li>
+                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Quisque vulputate enim eu fringilla.</li>
+                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Eleifend mi vel nisl lobortis nec tincidunt</li>
+                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Mauris in libero sodales ultrices purus</li>
+                  </ul>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <ul class="descriptionList">
+                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Praesent nec nisl iaculis, pulvinar nunc.</li>
+                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Sed at erat lacinia, condimentum eros non</li>
+                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Mauris in libero sodales ultrices purus at</li>
+                  </ul>
+                </div>
+              </div> -->
+
+              <% if @product.locations.any? %>
+              <div class="rooms-types-aria">
+                <div class="sectionTitle2">
+                  <h2>景点介绍</h2>
+                </div>
+                <% @product.locations.each_with_index do |location, index| %>
+                <div class="roomCategory">
+                  <div class="sub-title">
+                    <h4><%= location.chinese %> <%= location.english %></h4>
+                    <p><%= location.description %></p>
+                  </div>
+                  <!-- <div class="row">
+                    <div class="col-xs-12 col-sm-9">
+                      <ul class="roomAdvantage">
+                        <li><a href="#"><img src="/img/packages/shape-icon-1.png" alt="Image">Breakfast</a></li>
+                        <li><a href="#"><img src="/img/packages/shape-icon-2.png" alt="Image">Plasma TV</a></li>
+                        <li><a href="#"><img src="/img/packages/shape-icon-3.png" alt="Image">Free wifi</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                      <div class="roomRate">
+                        Per Night: <span>$150</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="roomGellary">
+                    <div class="single-item">
+                      <a class="fancybox-pop" rel="portfolio-1" href="img/holets/hotel-list-01.jpg">
+                        <img src="/img/holets/hotel-list-01.jpg" alt="Double Room">
+                      </a>
+                    </div>
+                  </div> -->
+                </div>
+                <% if index < @product.locations.size - 1 %>
+                <hr>
+                <% end %>
+                <% end %>
+              </div>
+              <% end %>
+
+              <!-- 每日行程 -->
+              <div class="information-aria">
+                <h3>每日行程</h3>
+                <p></p>
+
+                <% @product.product_dates.order(number: :asc).each do |product_date| %>
+                <div class="singleContent">
+                  <div class="media">
+                    <div class="media-body">
+                      <h4 class="media-heading"><%= product_date.title %></h4>
+                      <p>
+                        <%= product_date.content.html_safe %>
+                      </p>
+                    </div>
+                    <div class="media-right">
+                      <div class="days">day <%= product_date.number %></div>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+              </div>
+            </div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if @product.product_options.any? %>
+    <div class="row tabsPart" style="margin-top: 60px;">
+      <div class="col-xs-12">
+        <div class="sectionTitle">
+          <h2><span>适合您的出游方案</span></h2>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div role="tabpanel">
+
+          <!-- Nav Tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <% @product.product_options.each_with_index do |product_option, index| %>
+            <li role="presentation" class="<% if index == 0 %>active<% end %>">
+              <a href="#option_<%= product_option.id %>" aria-controls="option_<%= product_option.id %>" role="tab" data-toggle="tab" aria-expanded="<% if index == 0 %>true<% else %>false<% end %>"><%= product_option.name %></a>
+            </li>
+            <% end %>
+          </ul>
+
+          <!-- Tab Panels -->
+          <div class="tab-content">
+            <% @product.product_options.each_with_index do |product_option, index| %>
+            <div role="tabpanel" class="tab-pane <% if index == 0 %>active<% end %>" id="option_<%= product_option.id %>">
+              <div class="well">
+                <div class="media">
+                  <a class="media-left" href="#">
+                    <img class="media-object" src="/img/packages/package-related-01.jpg" alt="Image">
+                  </a>
+                  <div class="media-body">
+                    <div class="commonInfo">
+                      <p><%= product_option.description.html_safe %></p>
+
+                      <ul class="list-inline">
+                        <% if !product_option.line1.blank? %>
+                          <li style="width: 100%;"><i class="fa fa-square" aria-hidden="true"></i> <%= product_option.line1 %></li>
+                        <% end %>
+                        <% if !product_option.line2.blank? %>
+                          <li style="width: 100%;"><i class="fa fa-square" aria-hidden="true"></i> <%= product_option.line2 %></li>
+                        <% end %>
+                        <% if !product_option.line3.blank? %>
+                          <li style="width: 100%;"><i class="fa fa-square" aria-hidden="true"></i> <%= product_option.line3 %></li>
+                        <% end %>
+                        <% if !product_option.line4.blank? %>
+                          <li style="width: 100%;"><i class="fa fa-square" aria-hidden="true"></i> <%= product_option.line4 %></li>
+                        <% end %>
+                        <% if !product_option.line5.blank? %>
+                          <li style="width: 100%;"><i class="fa fa-square" aria-hidden="true"></i> <%= product_option.line5 %></li>
+                        <% end %>
+                        <% if !product_option.line6.blank? %>
+                          <li style="width: 100%;"><i class="fa fa-square" aria-hidden="true"></i> <%= product_option.line6 %></li>
+                        <% end %>
+                        <% if !product_option.line7.blank? %>
+                          <li style="width: 100%;"><i class="fa fa-square" aria-hidden="true"></i> <%= product_option.line7 %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+
+  </div>
+</section>

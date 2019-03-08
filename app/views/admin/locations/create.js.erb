@@ -1,0 +1,13 @@
+<% if @location.errors.any? %>
+toastr.error("<%= @location.errors.full_messages.join('<br>') %>");
+
+
+<% else %>
+  $('#mod-location-input .modal-content').html('');
+  $('#mod-location-input').modal("hide");
+
+  $('#locations_table').DataTable().row.add( <%= render partial: 'row.js.erb', locals: { location: @location } %> ).page('last').draw(false);
+
+  $('#mod-location-input form').find('input:text, input:password, input:file, select, textarea').val('');
+  $('#mod-location-input form').find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
+<% end %>

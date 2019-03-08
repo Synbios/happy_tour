@@ -1,0 +1,37 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title"><%= title %></h4>
+  </div>
+  <div class="modal-body no-padding">
+    <%= form_for [:admin, product, product_slide], html: { remote: true, class: "smart-form", role: "form", multipart: true }, authenticity_token: true do |f| %>
+      <fieldset>
+        <section>
+          <%= f.label :image, "Image file", class: "label" %>
+          <div class="input input-file">
+            <span class="button">
+              <%= f.file_field :image, onchange: "this.parentNode.nextSibling.value = this.value" %>Browse
+            </span>
+            <input type="text" placeholder="Prefer a 1140x740 image file" readonly="">
+          </div>
+        </section>
+
+        <section>
+          <%= f.label :order, "Order", class: "label" %>
+          <%= f.label :order, class: "input" do %>
+            <%= f.number_field :order %>
+          <% end %>
+        </section>
+      </fieldset>
+
+      <footer>
+        <button type="submit" class="btn btn-primary" data-loading-text="<i class='fa fw fa-circle-o-notch fa-spin '></i> Processing...">
+          提交
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+      </footer>
+    <% end %>
+  </div>
+</div>

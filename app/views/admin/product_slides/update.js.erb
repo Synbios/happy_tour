@@ -1,0 +1,5 @@
+<% if @product_slide.errors.any? %>
+  toastr.error("<%= @product_slide.errors.full_messages.join('<br>') %>");
+<% else %>
+  call_ajax_by_url('<%= admin_product_product_slides_path(@product_slide.product) %>');
+<% end %>

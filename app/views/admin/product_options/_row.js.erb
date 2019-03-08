@@ -1,0 +1,6 @@
+{
+  'DT_RowId':   '<%= product_option.id %>',
+  'name': '<%= product_option.name %>',
+  'actions': '<%= link_to("Edit", edit_admin_product_option_path(product_option), remote: true, class: "btn btn-info btn-xs").html_safe %> '
+  + '<%= link_to("Delete", admin_product_option_path(product_option), remote: true, method: :delete, data: { confirm: 'Are you sure to delete this option text?' }, class: "btn btn-danger btn-xs").html_safe %> '
+}
