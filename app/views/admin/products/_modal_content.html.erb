@@ -30,7 +30,7 @@
           <%= collection_check_boxes(:product, :location_ids, Location.all, :id, :chinese) do |b| %>
             <div class="col col-4">
               <%= b.label(class: "checkbox") do %>
-              <%= b.check_box(class: "check_box") %><i></i>Alexandra
+              <%= b.check_box(class: "check_box") %><i></i><%= b.text %>
               <% end %>
             </div>
           <% end %>
