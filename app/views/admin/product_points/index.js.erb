@@ -1,0 +1,37 @@
+$('#mod-product_point-input .modal-content').replaceWith('<%=j render partial: 'product_point_index.html.erb', locals: { product: @product, title: @product.name } %>');
+
+$('#product_points_table').replaceWith('<%=j render partial: 'index.html.erb', locals: {} %>');
+
+$('#mod-product_point-input').modal("show");
+
+var table_data = [
+  <% @product_points.each do |product_point| %>
+    <%= render partial: 'row.js.erb', locals: { product_point: product_point } %> ,
+  <% end %>
+];
+
+$('#product_points_table').DataTable({
+  sDom: "<'dt-toolbar'<'col-xs-12 col-sm-6 hidden-xs'f><'col-sm-6 col-xs-12'l>r>"+
+    "t"+
+    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+  autoWidth: false,
+  data: table_data,
+  pagingType: "simple",
+  pageLength: 10,
+  aaSorting: [],
+  columns: [
+    { data: 'text' },
+    { data: 'order' },
+    {
+      data: 'actions',
+      className: "text-center",
+      orderable: false
+    }
+  ]
+});
+
+$("div#product_points_table_length").after('<div class="text-right"><button id="new_product_point" class="btn btn-info margin-right-5">New feature</button></div>' );
+
+$( "#new_product_point" ).on('click', () => {
+  call_ajax_by_url('<%= new_admin_product_product_point_path(@product) %>');
+});

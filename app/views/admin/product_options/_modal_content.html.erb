@@ -16,6 +16,16 @@
         </section>
 
         <section>
+          <%= f.label :image, "Cover image file", class: "label" %>
+          <div class="input input-file">
+            <span class="button">
+              <%= f.file_field :image, onchange: "this.parentNode.nextSibling.value = this.value" %>Browse
+            </span>
+            <input type="text" placeholder="Prefer a 370x278 image file" readonly="">
+          </div>
+        </section>
+
+        <section>
           <%= f.label :description, "Description", class: "label" %>
           <%= f.label :description, class: "textarea" do %>
             <%= f.text_area :description, placeholder: "", rows: 5 %>

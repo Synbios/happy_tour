@@ -64,24 +64,28 @@
                   <%= @product.description %>
                 </p>
               </div>
-              <!-- <div class="row">
+              <% if @product_points.any? %>
+              <div class="row">
                 <div class="col-xs-12 col-sm-6">
                   <ul class="descriptionList">
-                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Cras tincidunt mi a sodales pulvinar.</li>
-                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Mauris in libero sodales ultrices purus</li>
-                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Quisque vulputate enim eu fringilla.</li>
-                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Eleifend mi vel nisl lobortis nec tincidunt</li>
-                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Mauris in libero sodales ultrices purus</li>
+                    <% @product_points.each_with_index do |product_point, index| %>
+                      <% if index % 2 == 0 %>
+                        <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i><%= product_point.text %></li>
+                      <% end %>
+                    <% end %>
                   </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                   <ul class="descriptionList">
-                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Praesent nec nisl iaculis, pulvinar nunc.</li>
-                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Sed at erat lacinia, condimentum eros non</li>
-                    <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Mauris in libero sodales ultrices purus at</li>
+                    <% @product_points.each_with_index do |product_point, index| %>
+                      <% if index % 2 != 0 %>
+                        <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i><%= product_point.text %></li>
+                      <% end %>
+                    <% end %>
                   </ul>
                 </div>
-              </div> -->
+              </div>
+              <% end %>
 
               <% if @product.locations.any? %>
               <div class="rooms-types-aria">
@@ -180,9 +184,11 @@
             <div role="tabpanel" class="tab-pane <% if index == 0 %>active<% end %>" id="option_<%= product_option.id %>">
               <div class="well">
                 <div class="media">
-                  <a class="media-left" href="#">
-                    <img class="media-object" src="/img/packages/package-related-01.jpg" alt="Image">
-                  </a>
+                  <% if product_option.image.file? %>
+                    <a class="media-left" href="#">
+                      <%= image_tag product_option.image.url(:exact), class: "media-object", alt: "image" %>
+                    </a>
+                  <% end %>
                   <div class="media-body">
                     <div class="commonInfo">
                       <p><%= product_option.description.html_safe %></p>

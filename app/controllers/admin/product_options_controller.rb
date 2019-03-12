@@ -29,7 +29,7 @@ class Admin::ProductOptionsController < Admin::MasterController
 
   private
   def product_option_params
-    params.require(:product_option).permit :name, :description, :line1, :line2, :line3, :line4, :line5, :line6, :line7
+    params.require(:product_option).permit :name, :image, :description, :line1, :line2, :line3, :line4, :line5, :line6, :line7
   end
 
   def set_product
