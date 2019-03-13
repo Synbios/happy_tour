@@ -8,4 +8,10 @@ class HomeController < MasterController
 
   def about
   end
+
+  def customize
+  end
+
+  def airfares_and_hotels
+  end
 end
