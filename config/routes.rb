@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/customize', to: "home#customize"
   get '/airfares_and_hotels', to: "home#airfares_and_hotels"
 
+  resources :messages, only: [:create]
+
   # admin
   devise_for :users, path: "admin", path_names: { sign_in: 'users/sign_in', sign_out: 'users/sign_out' }
 

@@ -1,0 +1,151 @@
+<% content_for :header_class do %>lightHeader<% end %>
+<% content_for :javascript do %>
+<script>
+  $(document).ready(()=>{
+    $("#airfares_and_hotels_form").validate({
+      submitHandler: function (form) {
+         $.ajax({
+           type: "POST",
+           dataType: "JSON",
+           url: "<%= messages_path(type: :airfares_and_hotels) %>",
+           data: $(form).serialize(),
+           success: function (response) {
+             Swal.fire(
+              'Thank you',
+              '您所填写的内容已经被发送至info@happytourcanada.com,我们的客户代表将在24小时内与您联系!',
+              'success'
+            );
+            $('form').find('input:text, input:password, input:file, select, textarea').val('');
+           }
+         });
+         return false;
+       }
+    });
+  });
+</script>
+<% end %>
+
+<section class="pageTitle" style="background-image:url(img/pages/page-title-bg4.jpg);">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="titleTable">
+          <div class="titleTableInner">
+            <div class="pageTitleInfo">
+              <h1>旅游定制</h1>
+              <div class="under-border"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mainContentSection blogSidebar">
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-sm-push-9 col-xs-12">
+          <aside>
+            <div class="panel panel-default">
+              <div class="panel-heading">Instagram</div>
+              <div class="panel-body">
+                <ul class="list-inline">
+                  <li><a href="#"><img src="img/blog/instagram-01.jpg" alt="Instagram-image"></a></li>
+                  <li><a href="#"><img src="img/blog/instagram-02.jpg" alt="Instagram-image"></a></li>
+                  <li><a href="#"><img src="img/blog/instagram-03.jpg" alt="Instagram-image"></a></li>
+                  <li><a href="#"><img src="img/blog/instagram-04.jpg" alt="Instagram-image"></a></li>
+                  <li><a href="#"><img src="img/blog/instagram-05.jpg" alt="Instagram-image"></a></li>
+                  <li><a href="#"><img src="img/blog/instagram-06.jpg" alt="Instagram-image"></a></li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+      <div class="col-sm-9 col-sm-pull-3 col-xs-12">
+        <div class="thumbnail blogSinglePost">
+          <img src="img/blog/blog-single-01.jpg" alt="blog-single-image">
+          <div class="caption">
+            <h2>Lorem Ipsum Dolor Amet</h2>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+          </div>
+
+          <%= form_tag(messages_path, method: :post, class: "commentsForm", id: "airfares_and_hotels_form") do %>
+            <h3>机票预订</h3>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <%= text_field_tag :name, nil, placeholder: "姓名", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <div class="checkbox_group">
+                    <label class="title">性别</label>
+                    <label class="radio-inline">
+                      <input type="radio" name="gender" value="male" checked> 男
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="gender" value="female"> 女
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= text_field_tag :dob, nil, placeholder: "出生日期", class: "form-control form_datepicker", required: true %>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= text_field_tag :departure_date, nil, placeholder: "出发日期", class: "form-control form_datepicker", required: true %>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= text_field_tag :return_date, nil, placeholder: "回程日期", class: "form-control form_datepicker", required: true %>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= text_field_tag :from, nil, placeholder: "居住地", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= text_field_tag :to, nil, placeholder: "目的地", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="checkbox_group">
+                    <label class="title">舱位要求</label>
+                    <label class="radio-inline">
+                      <input type="radio" name="seat" value="economy" checked> 经济舱
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="seat" value="business"> 商务舱
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="seat" value="window"> 靠窗
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <%= text_area_tag :comments, nil, placeholder: "其他要求", class: "form-control", rows: 3 %>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn buttonCustomPrimary">提交</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

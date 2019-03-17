@@ -1,4 +1,29 @@
 <% content_for :header_class do %>lightHeader<% end %>
+<% content_for :javascript do %>
+<script>
+  $(document).ready(()=>{
+    $("#contact_form").validate({
+      submitHandler: function (form) {
+         $.ajax({
+           type: "POST",
+           dataType: "JSON",
+           url: "<%= messages_path(type: :contact) %>",
+           data: $(form).serialize(),
+           success: function (response) {
+             Swal.fire(
+              'Thank you',
+              '您所填写的内容已经被发送至info@happytourcanada.com,我们的客户代表将在24小时内与您联系!',
+              'success'
+            );
+            $('form').find('input:text, input:password, input:file, select, textarea').val('');
+           }
+         });
+         return false;
+       }
+    });
+  });
+</script>
+<% end %>
 
 <!-- PAGE TITLE -->
 <section class="pageTitle" style="background-image:url(img/pages/page-title-bg5.jpg);">
@@ -72,21 +97,21 @@
       </div>
       <div class="col-sm-6 col-md-7 col-xs-12 col-lg-8">
         <div class="contactForm">
-          <form action="" method="POST" role="form" class="form">
+          <%= form_tag(messages_path, method: :post, class: "form", id: "contact_form") do %>
             <div class="form-group">
-              <input type="text" class="form-control" id="a" placeholder="姓名/Name">
+              <%= text_field_tag :name, nil, placeholder: "姓名/Name", class: "form-control", required: true %>
             </div>
             <div class="form-group">
-              <input type="email" class="form-control" id="b" placeholder="邮箱/Email">
+              <%= email_field_tag :email, nil, placeholder: "邮箱/Email", class: "form-control" %>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="c" placeholder="电话/Phone">
+              <%= text_field_tag :phone, nil, placeholder: "电话/Phone", class: "form-control" %>
             </div>
             <div class="form-group">
-              <textarea class="form-control" id="d" placeholder="问题和反馈/Message"></textarea>
+              <%= text_area_tag :content, nil, placeholder: "问题和反馈/Message", class: "form-control", required: true %>
             </div>
             <button type="submit" class="btn buttonCustomPrimary">提交咨询</button>
-          </form>
+          <% end %>
         </div>
       </div>
     </div>

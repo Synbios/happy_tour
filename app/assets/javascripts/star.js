@@ -17,3 +17,17 @@
 //= require plugins/isotope/isotope-triger
 //= require plugins/slick/slick
 //= require star-custom
+//= require jquery.validate
+//= require jquery.validate.localization/messages_zh
+//= require sweetalert2
+
+
+$(document).ready(()=>{
+  $('.form_datepicker').datepicker({
+    format: 'yyyy年mm月dd日',
+    autoclose: true,
+    orientation: 'top auto',
+    todayBtn: 'linked',
+    todayHighlight: true
+  });
+});

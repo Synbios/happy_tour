@@ -1,4 +1,29 @@
 <% content_for :header_class do %>lightHeader<% end %>
+<% content_for :javascript do %>
+<script>
+  $(document).ready(()=>{
+    $("#customize_form").validate({
+      submitHandler: function (form) {
+         $.ajax({
+           type: "POST",
+           dataType: "JSON",
+           url: "<%= messages_path(type: :customize) %>",
+           data: $(form).serialize(),
+           success: function (response) {
+             Swal.fire(
+              'Thank you',
+              '您所填写的内容已经被发送至info@happytourcanada.com,我们的客户代表将在24小时内与您联系!',
+              'success'
+            );
+            $('form').find('input:text, input:password, input:file, select, textarea').val('');
+           }
+         });
+         return false;
+       }
+    });
+  });
+</script>
+<% end %>
 
 <section class="pageTitle" style="background-image:url(img/pages/page-title-bg4.jpg);">
   <div class="container">
@@ -48,47 +73,77 @@
             <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
           </div>
 
-          <form action="" method="POST" role="form" class="commentsForm">
+          <%= form_tag(messages_path, method: :post, class: "commentsForm", id: "customize_form") do %>
             <h3>定制信息</h3>
             <div class="row">
               <div class="col-sm-6 col-xs-12">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="" placeholder="出发日期">
+                  <%= text_field_tag :start_date, nil, placeholder: "出发日期", class: "form-control form_datepicker", required: true %>
                 </div>
               </div>
               <div class="col-sm-6 col-xs-12">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="" placeholder="结束日期">
+                  <%= text_field_tag :end_date, nil, placeholder: "结束日期", class: "form-control form_datepicker", required: true %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= text_field_tag :number_of_people, nil, placeholder: "人数", class: "form-control", required: true %>
                 </div>
               </div>
               <div class="col-sm-6 col-xs-12">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="" placeholder="人数">
+
+                  <div class="checkbox_group">
+                    <label class="title">酒店星级</label>
+                    <label class="radio-inline">
+                      <input type="radio" name="hotel" value="five" checked> 五星
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="hotel" value="four"> 四星
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="hotel" value="three"> 三星
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="hotel" value="below_three"> 三星以下
+                    </label>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= text_field_tag :destination, nil, placeholder: "目的地", class: "form-control", required: true %>
                 </div>
               </div>
               <div class="col-sm-6 col-xs-12">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="" placeholder="酒店等级">
+                  <%= text_field_tag :activities, nil, placeholder: "游玩项目", class: "form-control" %>
                 </div>
               </div>
-              <div class="col-sm-6 col-xs-12">
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="" placeholder="目的地">
-                </div>
-              </div>
-              <div class="col-sm-6 col-xs-12">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="" placeholder="游玩项目">
+                  <div class="checkbox_group">
+                    <label class="title">车辆要求</label>
+                    <label class="radio-inline">
+                      <input type="radio" name="bus" value="7座豪华商务车" checked> 7座豪华商务车
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="bus" value="11座奔驰小巴"> 11座奔驰小巴
+                    </label>
+                  </div>
                 </div>
               </div>
               <div class="col-xs-12">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="" placeholder="车辆要求">
-                </div>
-              </div>
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <textarea class="form-control" rows="3" placeholder="其他要求"></textarea>
+                  <%= text_area_tag :comments, nil, placeholder: "其他要求", class: "form-control", rows: 3 %>
                 </div>
               </div>
             </div>
@@ -97,32 +152,47 @@
             <div class="row">
               <div class="col-sm-6 col-xs-12">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="" placeholder="姓名">
+                  <%= text_field_tag :contact_name, nil, placeholder: "姓名", class: "form-control", required: true %>
                 </div>
               </div>
               <div class="col-sm-6 col-xs-12">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="" placeholder="电话">
+                  <%= text_field_tag :contact_phone, nil, placeholder: "电话", class: "form-control", required: true %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= email_field_tag :contact_email, nil, placeholder: "邮箱", class: "form-control" %>
                 </div>
               </div>
               <div class="col-sm-6 col-xs-12">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="" placeholder="邮箱">
+                  <%= text_field_tag :contact_wechat, nil, placeholder: "微信", class: "form-control" %>
                 </div>
               </div>
-              <div class="col-sm-6 col-xs-12">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="" placeholder="微信">
-                </div>
-              </div>
+            </div>
+            <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="" placeholder="首选联系方式">
+                  <div class="checkbox_group">
+                    <label class="title">首选联系方式</label>
+                    <label class="radio-inline">
+                      <input type="radio" name="preferred_contact" value="phone" checked> 电话
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="preferred_contact" value="email"> 邮件
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="preferred_contact" value="wechat"> 微信
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
             <button type="submit" class="btn buttonCustomPrimary">提交</button>
-          </form>
+          <% end %>
         </div>
       </div>
     </div>

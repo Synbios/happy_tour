@@ -79,3 +79,4 @@ gem "paperclip", "~> 6.0.0"
 gem 'sitemap_generator'
 gem 'momentjs-rails'
 gem 'moment_timezone-rails'
+gem 'jquery-validation-rails'
