@@ -1,6 +1,6 @@
 class MessagesMailer < ApplicationMailer
   default from: "mike@iprogroup.ca"
-  COMPANY_EMAIL = "info@happytourcanada.com"
+  COMPANY_EMAIL = "youz@ualberta.ca"
 
   def airfares_and_hotels_message(message)
     @message = message
