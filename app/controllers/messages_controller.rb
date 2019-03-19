@@ -15,6 +15,18 @@ class MessagesController < MasterController
           message[:seat] = params[:seat]
           message[:comments] = params[:comments]
           MessagesMailer.airfares_and_hotels_message(message).deliver_now
+        elsif params[:type] == "hotels"
+          message = {}
+          message[:name] = params[:name]
+          message[:gender] = params[:gender]
+          message[:destination] = params[:destination]
+          message[:checkin_date] = params[:checkin_date]
+          message[:checkout_date] = params[:checkout_date]
+          message[:people] = params[:people]
+          message[:rooms] = params[:rooms]
+          message[:stars] = params[:stars]
+          message[:comments] = params[:comments]
+          MessagesMailer.hotels_message(message).deliver_now
         elsif params[:type] == "customize"
           message = {}
           message[:start_date] = params[:start_date]

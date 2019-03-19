@@ -4,7 +4,12 @@ class MessagesMailer < ApplicationMailer
 
   def airfares_and_hotels_message(message)
     @message = message
-    mail(to: COMPANY_EMAIL, subject: "机票和酒店咨询")
+    mail(to: COMPANY_EMAIL, subject: "机票咨询")
+  end
+
+  def hotels_message(message)
+    @message = message
+    mail(to: COMPANY_EMAIL, subject: "酒店咨询")
   end
 
   def customize_message(message)

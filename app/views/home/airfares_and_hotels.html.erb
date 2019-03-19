@@ -21,6 +21,26 @@
          return false;
        }
     });
+
+    $("#hotels_form").validate({
+      submitHandler: function (form) {
+         $.ajax({
+           type: "POST",
+           dataType: "JSON",
+           url: "<%= messages_path(type: :hotels) %>",
+           data: $(form).serialize(),
+           success: function (response) {
+             Swal.fire(
+              'Thank you',
+              '您所填写的内容已经被发送至info@happytourcanada.com,我们的客户代表将在24小时内与您联系!',
+              'success'
+            );
+            $('form').find('input:text, input:password, input:file, select, textarea').val('');
+           }
+         });
+         return false;
+       }
+    });
   });
 </script>
 <% end %>
@@ -131,6 +151,87 @@
                     </label>
                     <label class="radio-inline">
                       <input type="radio" name="seat" value="window"> 靠窗
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <%= text_area_tag :comments, nil, placeholder: "其他要求", class: "form-control", rows: 3 %>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn buttonCustomPrimary">提交</button>
+          <% end %>
+
+          <br><br><br>
+          <%= form_tag(messages_path, method: :post, class: "commentsForm", id: "hotels_form") do %>
+            <h3>酒店预订</h3>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <%= text_field_tag :name, nil, placeholder: "姓名", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <div class="checkbox_group">
+                    <label class="title">性别</label>
+                    <label class="radio-inline">
+                      <input type="radio" name="gender" value="male" checked> 男
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="gender" value="female"> 女
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= text_field_tag :destination, nil, placeholder: "目的地", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= text_field_tag :checkin_date, nil, placeholder: "入住日期", class: "form-control form_datepicker", required: true %>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= text_field_tag :checkout_date, nil, placeholder: "退房日期", class: "form-control form_datepicker", required: true %>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= number_field_tag :people, nil, placeholder: "人数", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= number_field_tag :rooms, nil, placeholder: "房间数目", class: "form-control", required: true %>
+                </div>
+              </div>
+
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="checkbox_group">
+                    <label class="title">星级要求</label>
+                    <label class="radio-inline">
+                      <input type="radio" name="stars" value="economy" checked> 二星
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="stars" value="business"> 三星
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="stars" value="window"> 四星
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="stars" value="window"> 五星
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="stars" value="window"> 民宿
                     </label>
                   </div>
                 </div>

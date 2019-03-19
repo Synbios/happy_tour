@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width" />
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>机票咨询</title>
+  <title>酒店咨询</title>
   <style>
 
   * {
@@ -256,55 +256,54 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 
           <tr>
 						<td>
-              Birthday:
-            </td>
-            <td>
-              <%= @message[:dob] %>
-            </td>
-          </tr>
-
-          <tr>
-						<td>
-              Departy date:
-            </td>
-            <td>
-              <%= @message[:departure_date] %>
-            </td>
-          </tr>
-
-          <tr>
-						<td>
-              Return date:
-            </td>
-            <td>
-              <%= @message[:return_date] %>
-            </td>
-          </tr>
-
-          <tr>
-						<td>
-              出发地:
-            </td>
-            <td>
-              <%= @message[:from] %>
-            </td>
-          </tr>
-
-          <tr>
-						<td>
               目的地:
             </td>
             <td>
-              <%= @message[:to] %>
+              <%= @message[:destination] %>
             </td>
           </tr>
 
           <tr>
 						<td>
-              舱位:
+              Checkin:
             </td>
             <td>
-              <%= @message[:seat] %>
+              <%= @message[:checkin_date] %>
+            </td>
+          </tr>
+
+          <tr>
+						<td>
+              Checkout:
+            </td>
+            <td>
+              <%= @message[:checkout_date] %>
+            </td>
+          </tr>
+          <tr>
+						<td>
+              人数:
+            </td>
+            <td>
+              <%= @message[:people] %>
+            </td>
+          </tr>
+
+          <tr>
+						<td>
+              房间数目:
+            </td>
+            <td>
+              <%= @message[:rooms] %>
+            </td>
+          </tr>
+
+          <tr>
+						<td>
+              星级:
+            </td>
+            <td>
+              <%= @message[:stars] %>
             </td>
           </tr>
 
