@@ -8,7 +8,15 @@
   <div class="modal-body no-padding">
     <%= form_for [:admin, product], :html => { remote: true, class: "smart-form", role: "form", multipart: true }, authenticity_token: true do |f| %>
       <fieldset>
-
+        <section>
+          <%= f.label :category, "线路类型", class: "label" %>
+          <%= f.label :category, class: "select" do %>
+            <%= f.select :category,
+            Product::CATEGORIES,
+            include_blank: false %>
+           <i></i>
+          <% end %>
+        </section>
 
         <section>
           <%= f.label :name, "名称", class: "label" %>

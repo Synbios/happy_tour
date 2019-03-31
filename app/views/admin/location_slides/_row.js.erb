@@ -1,0 +1,7 @@
+{
+  'DT_RowId':   '<%= location_slide.id %>',
+  'image': '<%= image_tag location_slide.image.url(:thumb) if location_slide.image.present? %>',
+  'order': '<%= location_slide.order %>',
+  'actions': '<%= link_to("Edit", edit_admin_location_slide_path(location_slide), remote: true, class: "btn btn-info btn-xs").html_safe %> '
+  + '<%= link_to("Delete", admin_location_slide_path(location_slide), remote: true, method: :delete, data: { confirm: 'Are you sure to delete this image?' }, class: "btn btn-danger btn-xs").html_safe %> '
+}

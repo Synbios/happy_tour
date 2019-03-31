@@ -29,7 +29,7 @@ class Admin::ProductsController < Admin::MasterController
   private
 
   def product_params
-    params.require(:product).permit :name, :description, location_ids: []
+    params.require(:product).permit :category, :name, :description, location_ids: []
   end
 
   def set_product

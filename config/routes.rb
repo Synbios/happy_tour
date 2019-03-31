@@ -32,6 +32,8 @@ Rails.application.routes.draw do
       resources :product_points, shallow: true
     end
 
-    resources :locations
+    resources :locations do
+      resources :location_slides, shallow: true
+    end
   end
 end

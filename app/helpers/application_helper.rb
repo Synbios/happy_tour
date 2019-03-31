@@ -128,8 +128,8 @@ module ApplicationHelper
       },
       {
         href: admin_products_page_path,
-        title: ('经典线路'),
-        content: "<i class='fa fa-lg fa-fw fa-tags'></i> <span class='menu-item-parent'>" + ('经典线路') + "</span>"
+        title: ('旅游线路'),
+        content: "<i class='fa fa-lg fa-fw fa-tags'></i> <span class='menu-item-parent'>" + ('旅游线路') + "</span>"
       },
       {
         href: admin_locations_page_path,

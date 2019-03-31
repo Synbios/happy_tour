@@ -1,0 +1,37 @@
+$('#mod-location_slide-input .modal-content').replaceWith('<%=j render partial: 'location_slide_index.html.erb', locals: { location: @location, title: @location.chinese } %>');
+
+$('#location_slides_table').replaceWith('<%=j render partial: 'index.html.erb', locals: {} %>');
+
+$('#mod-location_slide-input').modal("show");
+
+var table_data = [
+  <% @location_slides.each do |location_slide| %>
+    <%= render partial: 'row.js.erb', locals: { location_slide: location_slide } %> ,
+  <% end %>
+];
+
+$('#location_slides_table').DataTable({
+  sDom: "<'dt-toolbar'<'col-xs-12 col-sm-6 hidden-xs'f><'col-sm-6 col-xs-12'l>r>"+
+    "t"+
+    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+  autoWidth: false,
+  data: table_data,
+  pagingType: "simple",
+  pageLength: 10,
+  aaSorting: [],
+  columns: [
+    { data: 'image' },
+    { data: 'order' },
+    {
+      data: 'actions',
+      className: "text-center",
+      orderable: false
+    }
+  ]
+});
+
+$("div#location_slides_table_length").after('<div class="text-right"><button id="new_location_slide" class="btn btn-info margin-right-5">New image</button></div>' );
+
+$( "#new_location_slide" ).on('click', () => {
+  call_ajax_by_url('<%= new_admin_location_location_slide_path(@location) %>');
+});

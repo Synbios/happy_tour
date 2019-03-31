@@ -1,5 +1,6 @@
 {
-  'DT_RowId':   '<%= product.id %>',
+  'DT_RowId': '<%= product.id %>',
+  'category': '<%= product.category %>',
   'name': '<%= product.name %>',
   'points': '<%= link_to "#{product.product_points.count} features", admin_product_product_points_path(product), remote: true %>',
   'slide_images': '<%= link_to "#{product.product_slides.count} images", admin_product_product_slides_path(product), remote: true %>',

@@ -41,11 +41,11 @@
                 <% @product_slides.each_with_index do |product_slide, index| %>
                   <% if index == 0 %>
                     <div class="item active">
-                      <%= image_tag product_slide.image.url(:large), alt: "tour image" %>
+                      <%= image_tag product_slide.image.url(:exact), alt: "tour image" %>
                     </div>
                   <% else %>
                     <div class="item">
-                      <%= image_tag product_slide.image.url(:large), alt: "tour image" %>
+                      <%= image_tag product_slide.image.url(:exact), alt: "tour image" %>
                     </div>
                   <% end %>
                 <% end %>
@@ -111,14 +111,16 @@
                         Per Night: <span>$150</span>
                       </div>
                     </div>
-                  </div>
-                  <div class="roomGellary">
-                    <div class="single-item">
-                      <a class="fancybox-pop" rel="portfolio-1" href="img/holets/hotel-list-01.jpg">
-                        <img src="/img/holets/hotel-list-01.jpg" alt="Double Room">
-                      </a>
-                    </div>
                   </div> -->
+                  <div class="roomGellary">
+                    <% location.location_slides.order(order: :asc).each do |location_slide| %>
+                    <div class="single-item">
+                      <%= link_to location_slide.image.url(:original), class: "fancybox-pop" do %>
+                        <%= image_tag location_slide.image.url(:exact) %>
+                      <% end %>
+                    </div>
+                    <% end %>
+                  </div>
                 </div>
                 <% if index < @product.locations.size - 1 %>
                 <hr>
