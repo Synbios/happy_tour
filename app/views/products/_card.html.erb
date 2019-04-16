@@ -10,7 +10,7 @@
       <% unless product.deal_tag.blank? %>
       <div class="discountOffer">
         <h4>
-          <%= product.deal_tag %><span>DEAL</span>
+          <%= product.deal_tag.html_safe %>
         </h4>
       </div>
       <% end %>
