@@ -16,6 +16,23 @@
  @import "bootstrap";
  @import "font-awesome";
 
+.normal_list {
+  padding-left: 20px;
+  margin-bottom: 20px;
+  li {
+    margin: 10px;
+  }
+}
+
+ul.normal_list li {
+  list-style-type: circle;
+}
+
+.blogSinglePost {
+  img {
+    max-width: 100%;
+  }
+}
 
 .checkbox_group {
   height: 45px;

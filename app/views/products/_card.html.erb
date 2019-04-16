@@ -1,0 +1,50 @@
+<div class="col-sm-4 col-xs-12">
+  <div class="thumbnail deals">
+    <% if product.product_slides.count > 0 %>
+      <%= image_tag product.product_slides.first.image.url(:deal) %>
+    <% else %>
+      <img src="img/home/deal/deal-01.jpg" alt="deal-image">
+    <% end %>
+    <%= link_to product_path(product), class: "pageLink" do %><% end %>
+    <div class="discountInfo">
+      <% unless product.deal_tag.blank? %>
+      <div class="discountOffer">
+        <h4>
+          <%= product.deal_tag %><span>DEAL</span>
+        </h4>
+      </div>
+      <% end %>
+      <% if product.deal_stars.present? %>
+      <ul class="list-inline rating homePage">
+        <% (0 .. 4).each do |i| %>
+          <% if i < product.deal_stars %>
+            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+          <% else %>
+            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <% end %>
+      <% tags = [product.deal_f1, product.deal_f2, product.deal_f3] %>
+      <ul class="list-inline duration">
+        <% tags.each do |tag| %>
+          <% next if tag.blank? %>
+          <li><%= tag %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="caption">
+      <h4><%= link_to product.deal_title.blank? ? product.name : product.deal_title, product_path(product), class: "captionTitle" %></h4>
+      <p><%= product.deal_description.blank? ? product.description : product.deal_description %></p>
+      <div class="detailsInfo">
+        <h5 style="display: none;">
+          <span>Start From</span>
+          $299
+        </h5>
+        <ul class="list-inline detailsBtn">
+          <li><%= link_to "查看详情", product_path(product), class: "btn buttonTransparent" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

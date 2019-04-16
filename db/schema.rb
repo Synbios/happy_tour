@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190331061231) do
+ActiveRecord::Schema.define(version: 20190415183805) do
 
   create_table "location_slides", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|
     t.integer "location_id"
@@ -99,6 +99,14 @@ ActiveRecord::Schema.define(version: 20190331061231) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.string "category"
+    t.string "deal_tag"
+    t.integer "deal_stars"
+    t.string "deal_f1"
+    t.string "deal_f2"
+    t.string "deal_f3"
+    t.string "deal_title"
+    t.string "deal_description"
+    t.integer "deal_order"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|

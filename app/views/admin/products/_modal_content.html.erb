@@ -26,7 +26,7 @@
         </section>
 
         <section>
-          <%= f.label :description, "Description", class: "label" %>
+          <%= f.label :description, "简介", class: "label" %>
           <%= f.label :description, class: "textarea" do %>
             <%= f.text_area :description, placeholder: "", rows: 5 %>
           <% end %>
@@ -52,7 +52,65 @@
 						</div>
 					-->
 				</section>
+      </fieldset>
 
+      <fieldset>
+        <h5 style="margin-bottom: 15px;">Top deal section </h5>
+        <section>
+          <%= f.label :deal_order, "Top deal order", class: "label" %>
+          <%= f.label :deal_order, class: "input" do %>
+            <%= f.number_field :deal_order, placeholder: "0表示不在top deal里显示" %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :deal_tag, "左上角标语", class: "label" %>
+          <%= f.label :deal_tag, class: "input" do %>
+            <%= f.text_field :deal_tag, placeholder: "e.g. 特价" %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :deal_stars, "星级(0-5)", class: "label" %>
+          <%= f.label :deal_stars, class: "input" do %>
+            <%= f.number_field :deal_stars %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :deal_f1, "tag1", class: "label" %>
+          <%= f.label :deal_f1, class: "input" do %>
+            <%= f.text_field :deal_f1, placeholder: "e.g. 7天" %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :deal_f2, "tag2", class: "label" %>
+          <%= f.label :deal_f2, class: "input" do %>
+            <%= f.text_field :deal_f2, placeholder: "e.g. 最低价" %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :deal_f3, "tag3", class: "label" %>
+          <%= f.label :deal_f3, class: "input" do %>
+            <%= f.text_field :deal_f3, placeholder: "e.g. 纯玩" %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :deal_title, "top deal标题", class: "label" %>
+          <%= f.label :deal_title, class: "input" do %>
+            <%= f.text_field :deal_title, placeholder: "默认使用产品标题" %>
+          <% end %>
+        </section>
+
+        <section>
+          <%= f.label :deal_description, "top deal简介", class: "label" %>
+          <%= f.label :deal_description, class: "input" do %>
+            <%= f.text_field :deal_description, placeholder: "默认使用产品简介" %>
+          <% end %>
+        </section>
       </fieldset>
 
       <footer>
