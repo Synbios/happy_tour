@@ -1,4 +1,4 @@
-<div class="col-sm-4 col-xs-12">
+<!-- <div class="col-sm-4 col-xs-12">
   <div class="thumbnail deals">
     <% if product.product_slides.count > 0 %>
       <%= image_tag product.product_slides.first.image.url(:deal) %>
@@ -47,4 +47,28 @@
       </div>
     </div>
   </div>
+</div> -->
+
+<div class="col-sm-4 isotopeSelector">
+  <article class="">
+    <figure>
+      <% if product.product_slides.count > 0 %>
+        <%= image_tag product.product_slides.first.image.url(:deal) %>
+      <% else %>
+        <img src="img/home/deal/deal-01.jpg" alt="deal-image">
+      <% end %>
+      <h4><%= product.deal_title.blank? ? product.name : product.deal_title %></h4>
+      <div class="overlay-background">
+        <div class="inner"></div>
+      </div>
+      <div class="overlay">
+        <%= link_to product_path(product), class: "fancybox-pop" do %>
+          <div class="overlayInfo">
+            <h5> <span></span></h5>
+            <p>查看详情</p>
+          </div>
+        <% end %>
+      </div>
+    </figure>
+  </article>
 </div>

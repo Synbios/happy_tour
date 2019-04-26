@@ -16,6 +16,16 @@
  @import "bootstrap";
  @import "font-awesome";
 
+.footer {
+  a {
+    color: #929497;
+  }
+  a:hover {
+    color: #fff;
+  }
+}
+
+
 .normal_list {
   padding-left: 20px;
   margin-bottom: 20px;

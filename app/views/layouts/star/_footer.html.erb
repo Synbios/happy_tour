@@ -2,7 +2,7 @@
   <div class="footer clearfix">
     <div class="container">
       <div class="row">
-        <div class="col-sm-9 col-xs-12">
+        <div class="col-sm-6 col-xs-12">
           <div class="footerContent">
             <%= link_to root_path, class: "footer-logo" do %>
               <%= image_tag "logo-color-sm.png", alt: "footer-logo" %>
@@ -17,6 +17,34 @@
           </div>
         </div>
         <div class="col-sm-3 col-xs-12">
+          <div class="footerContent imgGallery">
+            <h5>初到加拿大</h5>
+            <div class="row">
+              <!-- <div class="col-xs-4">
+                <a class="fancybox-pop" href="img/home/gallery/gallery-1.jpg"><img src="img/home/gallery/thumb-gallery-1.jpg" alt="image"></a>
+              </div> -->
+              <div class="col-xs-12">
+                <%= link_to "加拿大入境安全", article1_path %>
+              </div>
+              <div class="col-xs-12">
+                <%= link_to "加拿大签证办理", article2_path %>
+              </div>
+              <div class="col-xs-12">
+                <%= link_to "加拿大简介", article3_path %>
+              </div>
+              <div class="col-xs-12">
+                <%= link_to "旅游贴士", article4_path %>
+              </div>
+              <div class="col-xs-12">
+                <%= link_to "特色风土人情", article5_path %>
+              </div>
+              <div class="col-xs-12">
+                <%= link_to "购物指南", article6_path %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 col-xs-12">
           <div class="footerContent">
             <h5>联系我们</h5>
             <p>加拿大乐途定制旅游.</p>
@@ -28,31 +56,6 @@
             </ul>
           </div>
         </div>
-        <!-- <div class="col-sm-3 col-xs-12">
-          <div class="footerContent imgGallery">
-            <h5>Gallery</h5>
-            <div class="row">
-              <div class="col-xs-4">
-                <a class="fancybox-pop" href="img/home/gallery/gallery-1.jpg"><img src="img/home/gallery/thumb-gallery-1.jpg" alt="image"></a>
-              </div>
-              <div class="col-xs-4">
-                <a class="fancybox-pop" href="img/home/gallery/gallery-2.jpg"><img src="img/home/gallery/thumb-gallery-2.jpg" alt="image"></a>
-              </div>
-              <div class="col-xs-4">
-                <a class="fancybox-pop" href="img/home/gallery/gallery-3.jpg"><img src="img/home/gallery/thumb-gallery-3.jpg" alt="image"></a>
-              </div>
-              <div class="col-xs-4">
-                <a class="fancybox-pop" href="img/home/gallery/gallery-4.jpg"><img src="img/home/gallery/thumb-gallery-4.jpg" alt="image"></a>
-              </div>
-              <div class="col-xs-4">
-                <a class="fancybox-pop" href="img/home/gallery/gallery-5.jpg"><img src="img/home/gallery/thumb-gallery-5.jpg" alt="image"></a>
-              </div>
-              <div class="col-xs-4">
-                <a class="fancybox-pop" href="img/home/gallery/gallery-6.jpg"><img src="img/home/gallery/thumb-gallery-6.jpg" alt="image"></a>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -61,10 +64,12 @@
       <div class="row">
         <div class="col-sm-6 col-sm-push-6 col-xs-12">
           <ul class="list-inline">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Blog</a></li>
+            <!-- <li><a href="#">Privacy Policy</a></li> -->
+            <li>
+              <a href="https://www.consumerprotectionbc.ca/" target="_blank">
+                <%= image_tag "cpbc.png", style: "height: 19px;" %> Consumer Protection BC
+              </a>
+            </li>
           </ul>
         </div>
         <div class="col-sm-6 col-sm-pull-6 col-xs-12">
