@@ -21,6 +21,7 @@ install_plugin Capistrano::Puma
 # install_plugin Capistrano::SCM::Svn
 # or
 require "capistrano/scm/git"
+require 'capistrano/sitemap_generator'
 install_plugin Capistrano::SCM::Git
 
 # Include tasks from other gems included in your Gemfile
