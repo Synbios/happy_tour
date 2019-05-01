@@ -83,7 +83,7 @@ namespace :deploy do
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
-  after  :finishing,    :sitemap:create  
+  #after  :finishing,    :sitemap:create  
   #after  :finishing,    :update_cron
 end
 
